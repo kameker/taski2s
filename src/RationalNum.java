@@ -8,7 +8,24 @@ public class RationalNum {
     }
 
     public String toString() {
-        return numerator == denominator ? "1" : numerator == -denominator ? "-1" : numerator + "/" + denominator;
+        String result = "";
+        if (this.numerator % this.denominator == 0) {
+            return "" + this.numerator / this.denominator;
+        } else {
+            if(this.numerator > this.denominator) {
+                result += this.numerator + "\n";
+                result += MyUtils.getLine(MyUtils.getLengthofNum(this.numerator)) + "\n";
+                result += MyUtils.getSpace(MyUtils.getLengthofNum(this.numerator) / 2 - (this.numerator % 2));
+                result += this.denominator;
+            }
+            else{
+                result += MyUtils.getSpace(MyUtils.getLengthofNum(this.denominator) / 2 - (this.denominator % 2));
+                result += this.numerator + "\n";
+                result += MyUtils.getLine(MyUtils.getLengthofNum(this.denominator)) + "\n";
+                result += this.denominator;
+            }
+            return result;
+        }
     }
 
     public int getNumerator() {
@@ -85,8 +102,7 @@ public class RationalNum {
 
     public int[] getShortedNum(int a, int b) {
         int newA = Math.abs(a), newB = Math.abs(b);
-        for (int i = (int) (Math.sqrt(Math.max(newA, newB)) + 1); i > 1; i--) {
-            if (i > Math.min(newA, newB)) break;
+        for (int i = Math.min(newA, newB); i > 1; i--) {
             if (a % i == 0 && b % i == 0) {
                 a /= i;
                 b /= i;
