@@ -50,5 +50,8 @@ public class CustomSet<T> {
         System.out.println(customSet);
         System.out.println(customSet.isEmpty());
         System.out.println(customSet.contains("bob"));
+        System.out.println(customSet.size());
+        customSet.clear();
+        System.out.println(customSet);
     }
 }
